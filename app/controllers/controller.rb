@@ -1,9 +1,3 @@
-controller = TaskController.new
-
-# ruby ... list
-if ARGV[0] == 'list'
-  controller.list
-end
 
 module TaskViewer
 
@@ -16,14 +10,17 @@ end
 
 class TaskController
 
+  def initialize
+  end
+
   def add(description)
     Task.create(description: description)
   end
 
   def list
     tasklist = Task.all.to_a # => Array
-    tasklist.each do |task|
-      puts "#{task.id}. #{task.description}"
+    tasklist.each_with_index do |task, i|
+      puts "#{i + 1}. #{task.description}"
     end
   end
 
