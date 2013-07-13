@@ -20,7 +20,7 @@ class TaskController
   def list
     tasklist = Task.all.to_a # => Array
     tasklist.each_with_index do |task, i|
-      puts "#{i + 1}. #{task.description}"
+      puts "#{i + 1}. #{task.description} // db: #{task.id}"
     end
   end
 
@@ -29,7 +29,8 @@ class TaskController
   end
 
   def mark_complete(id)
-
+    task = Task.find_by_id(id)
+    task.completed_at = Time.now
   end
 
 end
