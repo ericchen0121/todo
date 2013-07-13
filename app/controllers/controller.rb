@@ -28,4 +28,8 @@ class TaskController
     Task.destroy(id)
   end
 
+  def mark_complete(id)
+
+  end
+
 end
